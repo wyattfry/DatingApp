@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.Api.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.Api.Controllers
 {
@@ -19,19 +20,20 @@ namespace DatingApp.Api.Controllers
         }
         // GET api/values
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> GetAllValues()
         {
             // IActionResult allows http responses rather than just text when using ActionResult
             // gets all rows in Values table
-            var values = _context.Values.ToList();
+            var values = await _context.Values.ToListAsync();
+
             return Ok(values);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> GetValue(int id)
         {
-            var value = _context.Values.FirstOrDefault(x => x.Id == id);
+            var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
 
             return Ok(value);
         }
