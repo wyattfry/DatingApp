@@ -32,6 +32,7 @@ namespace DatingApp.Api
             // anything added here is available for injection throughout the app
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +56,12 @@ namespace DatingApp.Api
 
             // request execution pipeline
             // mvc is the framework, middleware, connects network based requests to the backend data
+            app.UseCors(x => {
+                x
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
             app.UseMvc();
         }
     }
