@@ -11,5 +11,6 @@ namespace DatingApp.Api.Data
         // need to tell EF about our entities, require properties (DbSet)
         // name becomes the sql table name
         public DbSet<Value> Values { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
