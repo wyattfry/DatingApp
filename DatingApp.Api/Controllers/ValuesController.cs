@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DatingApp.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+// main feature of ApiController attribute: requires routing specified via Attributes, not the old fashioned way
+// it also helps with validating requests. ControllerBase is relatively new, allows access to http responses
+// and actions, e.g. IActionResult. Alternative is "Controller", which has View support. Base does not have.
 
 namespace DatingApp.Api.Controllers
 {
