@@ -22,4 +22,15 @@ export class NavComponent implements OnInit {
     });
   }
 
+  loggedIn() {
+    // TODO check whether token is expired
+    const token = localStorage.getItem("token");
+    return !!token;
+  }
+
+  logOut() {
+    localStorage.removeItem("token");
+    console.log('Successfully logged out.');
+  }
+
 }
