@@ -27,4 +27,9 @@ export class AuthService {
         })
       );
   }
+
+  register(model: any) {
+    // model will store username and password
+    return this.http.post(this.baseUrl + 'register', model);
+  }
 }
